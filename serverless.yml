@@ -1,12 +1,14 @@
-service: serverless-aws-lambda-receiver-bolt-js
+org: peterjcole
+app: slack-giffy
+service: bolt-js-receiver
 frameworkVersion: '2'
 provider:
   name: aws
   runtime: nodejs12.x
   environment:
-    SLACK_SIGNING_SECRET: ${env:SLACK_SIGNING_SECRET}
-    SLACK_BOT_TOKEN: ${env:SLACK_BOT_TOKEN}
-    GIPHY_API_KEY: ${env:GIPHY_API_KEY}
+    SLACK_SIGNING_SECRET: ${param:SLACK_SIGNING_SECRET}
+    SLACK_BOT_TOKEN: ${param:SLACK_BOT_TOKEN}
+    GIPHY_API_KEY: ${param:GIPHY_API_KEY}
 functions:
   slack:
     handler: app.handler
